@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+    </head>
+    <body>
+        <h2>TEST</h2>
+        <form method="POST" action="{% url 'test' %}">
+            <input id="text" />
+            <input type="submit" id="btn"/>
+        </form>
+        <span id="result"></span>
+    </body>
+    <!--script>
+        document.getElementById("btn").onclick = function(e) {
+            e.preventDefault();
+            let inputText = document.getElementById("text").value;
+            sendText(inputText);
+        }
+
+        function sendText(inputText) {
+           fetch('/test', {
+                method: "POST",
+                body: JSON.stringify({
+                    'text': inputText,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                let result = document.getElementById("result");
+                const serverData = data.Text;
+                result.innerHTML = serverData;
+                console.log(data);
+            });
+        }
+    </script-->
+    <script>
+        window.onload =()=> {
+            fetch('/emails/inbox')
+            .then(response => response.json())
+            .then(emails => {
+                // Print emails
+                console.log(emails);
+
+                // ... do something else with emails ...
+            });
+        }
+    </script>
+</html>

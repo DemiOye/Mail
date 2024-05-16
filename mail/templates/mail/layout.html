@@ -1,0 +1,112 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Mail{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'mail/styles.css' %}">
+        <style>
+            .email-div-unread {
+                padding: 20px;
+                border: 0.7px black solid;
+                background: white;
+                margin: 10px;
+            }
+
+            .email-div-read {
+                padding: 20px;
+                border: 0.7px black solid;
+                background: #e1e1e1;
+                margin: 10px;
+            }
+
+            .sender {
+                margin-right: 20px;
+            }
+
+            .time {
+                color: dimgrey;
+                float: right;
+            }
+
+            .view-email {
+                float: right;
+                margin-left: 15px;
+                color: #007bff;
+                background: white;
+                border: 0.7px #007bff solid;
+                border-radius: 3px;
+            }
+
+            .view-email:hover {
+                color: white;
+                background: #007bff;
+            }
+
+            #reply {
+                margin-top: 15px;
+                margin-right: 10px;
+                color: #007bff;
+                background: white;
+                border: 0.7px #007bff solid;
+                border-radius: 3px;
+            }
+
+            #reply:hover {
+                color: white;
+                background: #007bff;
+            }
+
+            #archive-btn {
+                margin-top: 15px;
+                margin-right: 10px;
+                color: #007bff;
+                background: white;
+                border: 0.7px #007bff solid;
+                border-radius: 3px;
+            }
+
+            #archive-btn:hover {
+                color: white;
+                background: #007bff;
+            }
+
+            #unarchive-btn {
+                margin-top: 15px;
+                color: #007bff;
+                background: white;
+                border: 0.7px #007bff solid;
+                border-radius: 3px;
+            }
+
+            #unarchive-btn:hover {
+                color: white;
+                background: #007bff;
+            }
+
+            #email {
+                display: none;
+            }
+
+            #reply-email-title {
+                display: none;
+            }
+
+            #error {
+                color: red;
+                font-style: italic;
+                float: right;
+            }
+
+        </style>
+        {% block script %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

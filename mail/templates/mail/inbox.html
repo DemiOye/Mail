@@ -1,0 +1,56 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <h2>{{ request.user.email }}</h2>
+
+    <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
+    <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
+    <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
+    <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
+    <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
+    <hr>
+
+    <div id="email-title"></div>
+    <br>
+    <div id="emails-cont"></div>
+
+    <div id="email">
+        <div id="email-content">
+            <b>From:&nbsp;</b><span id="from"></span><br>
+            <b>To:&nbsp;</b><span id="to"></span><br>
+            <b>Subject:&nbsp;</b><span id="subject"></span><br>
+            <b>Timestamp:&nbsp;</b><span id="time"></span><br>
+            <div style="display: flex">
+                <button id="reply">Reply</button>
+                <button id="archive-btn">Archive</button>
+                <button id="unarchive-btn">Unarchive</button>
+            </div>
+        </div>
+        <hr>
+        <p id="body"></p>
+    </div>
+
+    <div id="compose-view">
+        <h3 id="new-email-title">New Email</h3>
+        <h3 id="reply-email-title">Replying to <b id="reply-title"></b></h3>
+        <form id="compose-form" method="POST" action="{% url 'compose' %}">
+            <div class="form-group">
+                From: <input disabled id="compose-sender" class="form-control" value="{{ request.user.email }}">
+            </div>
+            <div class="form-group">
+                To: <span id="error"></span>
+                <input id="compose-recipients" class="form-control">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="compose-subject" placeholder="Subject">
+            </div>
+            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea><br>
+            <input type="submit" id="submit-btn" value="Send Email" class="btn btn-primary"/>
+        </form>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}
